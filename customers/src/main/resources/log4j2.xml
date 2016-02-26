@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<log4j:configuration status="DEBUG">
+	<root>
+
+        <priority value ="debug" />
+
+        <appender-ref ref="console" />
+
+    </root>
+
+	<appender name="fileAppender" class="org.apache.log4j.FileAppender">
+
+        <param name="File" value="E:/log4j.log" />
+
+        <param name="Append" value="true" />
+
+        <layout class="org.apache.log4j.PatternLayout">
+
+          <param name="ConversionPattern" value="%t %-5p %c{2} - %m%n"/>
+
+        </layout>
+
+    </appender>
+	<Loggers>
+		<Logger name="root" level="info" additivity="false">
+			<appender-ref ref="RollingFile" level="info" />
+		</Logger>
+		<Root level="info" additivity="false">
+			<AppenderRef ref="RollingFile" />
+		</Root>
+	</Loggers>
+</log4j:configuration>

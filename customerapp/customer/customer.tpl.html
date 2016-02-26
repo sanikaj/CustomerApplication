@@ -1,0 +1,81 @@
+<div ng-app="myApp.customer">
+<div class="row no-gutters">
+    <h1>Create List of Customers for {{accountName}}</h1>
+</div>
+<!--<div class="row no-gutters">-->
+<form ng-submit="addcustomer()">
+  
+        <div class="form-group">
+            <label for="textEdit">Name:</label>
+            <input type="text" ng-model="customer.name"  class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="textEdit">Email:</label>
+            <input type="text" ng-model="customer.email"  class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="textEdit">Telephone:</label>
+            <input type="text" ng-model="customer.telephone"  class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="textEdit">Street Name:</label>
+            <input type="text" ng-model="customer.address.street"  class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="textEdit">City:</label>
+            <input type="text" ng-model="customer.address.city"  class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="textEdit">State:</label>
+            <input type="text" ng-model="customer.address.state"  class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="textEdit">Zip:</label>
+            <input type="text"  ng-model="customer.address.zip"  class="form-control"/>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success" type="submit">Create New Customer</button>
+       </div>
+</form>
+
+<div class="row no-gutters">
+    <table class="table table-striped">
+        <th>Name</th>
+        <th>Email</th>
+        <th>Telephone</th>
+        <th>Address</th>
+        <th>Action</th>
+        <tr ng-repeat="customer in customers">
+            <td><div ng-hide="editingData[customer.customer_id]">{{customer.name}}</div>
+                <div ng-show="editingData[customer.customer_id]"><input type="text" ng-model="customer.name" /></div>
+            </td>
+            <td><div ng-hide="editingData[customer.customer_id]">{{customer.email}}</div>
+                <div ng-show="editingData[customer.customer_id]"><input type="text" ng-model="customer.email" /></div>
+            </td>
+            <td><div ng-hide="editingData[customer.customer_id]">{{customer.telephone}}</div>
+                <div ng-show="editingData[customer.customer_id]"><input type="text" ng-model="customer.telephone" />
+                </div>
+            </td>
+            <td>
+                <div ng-hide="editingData[customer.customer_id]">{{customer.address.street}}</div>
+                <div ng-show="editingData[customer.customer_id]"><input type ="text"  ng-model="customer.address.street"/><input type ="text" ng-model="customer.address.city"/><input type ="text" ng-model="customer.address.state"/><input type ="text" ng-model="customer.address.zip"/>
+                </div>
+            </td>
+            
+            <td>
+              <!--  <a ui-sref="" class="btn btn-large btn-default">
+                    Update
+                </a>
+                <a ui-sref="" class="btn btn-large btn-default">
+                    Delete
+                </a>-->
+            <button class="btn btn-large btn-default"ng-hide="editingData[customer.customer_id]" ng-click="modify(customer)">Modify</button>
+            <button class="btn btn-large btn-default" ng-show="editingData[customer.customer_id]" ng-click="update(customer)">Update</button>
+            <!--<button class="btn btn-large btn-default" ng-hide="viewField">Add</button>-->
+            <button class="btn btn-large btn-default" ng-click="delete(customer)" ng-hide="viewField">Delete</button>
+            </td>
+        </tr>
+    </table>
+</div>
+</div>
+</div>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html ng-app="myApp" ng-controller="AppCtrl">
+  <head>
+    <title ng-bind="pageTitle"></title>
+     <!--Bootstrap and angular-->
+     <script src="./bower_components/angular/angular.js"></script>
+     <script src="//code.angularjs.org/1.5.0-rc.2/angular-messages.min.js"></script>
+     <script src="//code.angularjs.org/1.5.0-rc.2/angular-resource.min.js"></script>
+     <script type="text/javascript" src="js/angular-route.js"></script>
+     <script type="text/javascript" src="js/angular-ui-router.min.js"></script>
+     <script src="js/angular-resource.js"></script>
+     <script type="text/javascript" src="account.js"></script>
+     <script type="text/javascript" src="customer.js"></script>
+     <script type="text/javascript" src="app.js"></script>
+     <!--OAUTH 2.0 Satellizer-->
+     <script src="//cdn.jsdelivr.net/satellizer/0.14.0/satellizer.min.js"></script>
+     
+     <!--Bootstrap-->
+     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+     <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+      <script src="js/bootstrap.min.js"></script>
+
+     <!--Ends here-->
+    
+    <!-- font awesome from BootstrapCDN -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" ng-init="menuCollapsed = true"
+            ng-click="menuCollapsed = ! menuCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="navbar-brand">
+            CustoApp
+            <small>
+              <a href="http://github.com/ngbp/ngbp/blob/v<%= version %>-release/CHANGELOG.md">
+                v0.0.0.1
+              </a>
+            </small>
+          </div>
+        </div>
+        <div class="collapse navbar-collapse" collapse="menuCollapsed">
+            <ul class="nav navbar-nav">
+            <li ui-sref-active="active" ng-if="!isAuthenticated()">
+              <a href ui-sref="login">
+                <i class="fa fa-automobile"></i>
+                Login
+              </a>
+            </li>
+            <li ui-sref-active="active" ng-if="isAuthenticated()">
+              <a href ng-click="logout()">
+                <i class="fa fa-automobile"></i>
+                Logout
+              </a>
+            </li>
+            
+            <!--<li ui-sref-active="active">
+              <a href ui-sref="customer">
+                <i class="fa fa-user-plus"></i>
+                Customers
+              </a>
+            </li>-->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" ui-view="main"></div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <p>
+            <p>
+            (c) 2016 <a href="http://sanikajoshi.net">Sanika Joshi</a>.
+                Master in Information Technology 
+                University of North Carolina at Charlotte 
+                Spring 2014   
+            </p>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

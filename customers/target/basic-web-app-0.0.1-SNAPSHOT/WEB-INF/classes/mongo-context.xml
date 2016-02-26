@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xsi:schemaLocation="http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context.xsd
+      http://www.springframework.org/schema/data/mongo
+      http://www.springframework.org/schema/data/mongo/spring-mongo.xsd
+      http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- Default bean name is 'mongo' -->
+	<mongo:mongo host="localhost" port="27017">
+		<mongo:options connections-per-host="8"
+			threads-allowed-to-block-for-connection-multiplier="4"
+			connect-timeout="1000" max-wait-time="1500" auto-connect-retry="true"
+			socket-keep-alive="true" socket-timeout="1500" slave-ok="true"
+			write-number="1" write-timeout="0" write-fsync="true" />
+	</mongo:mongo>
+	<mongo:db-factory dbname="kenzan" mongo-ref="mongo" />
+
+	<bean id="customermongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+
+		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
+
+	</bean>
+	<!-- <mongo:db-factory dbname="kenzan" mongo-ref="mongo"/> -->
+	<!-- To translate any MongoExceptions thrown in @Repository annotated classes -->
+	<!-- <context:component-scan base-package="com.sanika.spring.web.rest.mvc" 
+		/> -->
+	<!-- <context:component-scan base-package="com.sanika.spring.web.rest.mvc,com.sanika.spring.web.core.services,com.sanika.spring.web.core.repositories.jpa"></context:component-scan> -->
+	<!-- <context:component-scan base-package="com.sanika.spring.web.core.repositories.jpa"></context:component-scan> -->
+     <!-- Beans for Spring Localization -->
+     <!--  <bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="en" />
+	</bean>
+    --> 
+	<!--  <bean id="localeChangeInterceptor"
+		class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+		<property name="paramName" value="language" />
+	</bean>
+	
+	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" >
+		<property name="interceptors">
+		   <list>
+			<ref bean="localeChangeInterceptor" />
+		   </list>
+		</property>
+	</bean>   
+	-->
+	<!-- Configuring the messages_en.properties file -->
+	<!--  <bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="messages_en" />
+	</bean>
+	-->
+	<context:annotation-config />
+</beans>

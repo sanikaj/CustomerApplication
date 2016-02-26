@@ -1,0 +1,4 @@
+DispatcherServlet  - All the requests are routed through this servlet 
+TODO 
+  1. Create a Mongodb client to make connections to 
+  2. Create a mongodb connection properties file

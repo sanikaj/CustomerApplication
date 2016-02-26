@@ -1,0 +1,27 @@
+{
+  "name": "AngularJs",
+  "version": "0.0.0",
+  "description": "AngularJs",
+  "main": "index.html",
+  "keywords": [
+    "Angular",
+    "website",
+    "community"
+  ],
+  
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-material-design": "~0.3.0",
+    "grunt": "~0.4.5",
+    "angular": "~1.4.9",
+    "angular-route": "~1.4.0",
+    "angular-resource": "1.4.x"
+      }
+}
